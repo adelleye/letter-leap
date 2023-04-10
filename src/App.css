@@ -1,38 +1,181 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  min-height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+header {
+  margin-bottom: 2rem;
+}
+
+.word-pair {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #333;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #333;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 1.5rem;
+}
+.error-message {
+  color: red;
+  margin-top: 0.5rem;
+}
+
+input {
+  flex-grow: 1;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  border: 1px solid #ccc;
+  color: #333;
+}
+
+button {
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  background-color: #0077cc;
   color: white;
+  border: none;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  background-color: #005fa3;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.progress-counter {
+  margin-bottom: 2rem;
+}
+.highlighted-text {
+  display: inline-flex;
+}
+
+@keyframes winning-tile-animation {
+  0% {
+    transform: translateY(0);
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.tile-letter.winning {
+  animation: winning-tile-animation 1s linear;
+}
+
+.tile-letter {
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 3px;
+  padding: 3px;
+  box-sizing: border-box;
+
+  text-align: center;
+  color: #000;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2px;
+}
+
+.correct-letter {
+  color: green;
+  font-weight: bold;
+}
+
+.present-letter {
+  color: orange;
+}
+
+.guess-history {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(4, auto);
+  grid-auto-columns: auto;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 400px;
+  max-height: calc(100vh - 200px);
+  overflow-x: auto;
+  padding-top: 12px;
+  margin-bottom: 2rem;
+  justify-content: flex-start;
+}
+
+.guess-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.guess {
+  width: calc(
+    100% / 8 - 1rem
+  ); /* Divide the available width by 8 and subtract the gap */
+  display: flex;
+  justify-content: center;
+}
+
+footer {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+@media (max-width: 480px) {
+  .word-pair {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  form {
+    flex-direction: column;
+  }
+
+  input {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
   }
 }
